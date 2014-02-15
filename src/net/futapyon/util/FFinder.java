@@ -81,7 +81,6 @@ public class FFinder {
 			find(file);
 		}
 	}
-	
 
 	private void processZipInputStream(ZipInputStream zis,String parent) throws IOException{
 		ZipEntry ze=null;

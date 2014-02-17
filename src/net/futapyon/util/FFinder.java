@@ -39,6 +39,13 @@ public class FFinder {
 	
 	
 	public static void main(String[] args) throws IOException {
+		
+	    if (args.length < 2)
+	    {
+	      System.out.println("Usage: java -jar FFinder.jar [filename to find] [directory name or archive name to find the file in]...");
+	      System.exit(0);
+	    }		
+		
 		FFinder finder = new FFinder();
 		System.out.println("#### Files to find: "+ args[0]);
 		finder.setFilesToFind(args[0]);
@@ -46,7 +53,7 @@ public class FFinder {
 			System.out.println("#### Searching in: "+ args[i]);
 			finder.find(new File(args[i]));
 		}
-		System.out.println("### Found "+finder.getMatchCount()+" files");
+		System.out.println("#### Found "+finder.getMatchCount()+" files");
 	}
 
 	public void find(File file) throws ZipException, IOException{

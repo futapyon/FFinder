@@ -27,9 +27,14 @@ public class FFinder {
 	
 
 	private String filesToFind;   //part of filename , or regular expression to match filename
+	private int matchCount = 0;
 
 	public void setFilesToFind(String filesToFind) {
 		this.filesToFind = filesToFind;
+	}
+	
+	public int getMatchCount(){
+		return this.matchCount;
 	}
 	
 	
@@ -41,6 +46,7 @@ public class FFinder {
 			System.out.println("#### Searching in: "+ args[i]);
 			finder.find(new File(args[i]));
 		}
+		System.out.println("### Found "+finder.getMatchCount()+" files");
 	}
 
 	public void find(File file) throws ZipException, IOException{
@@ -60,6 +66,7 @@ public class FFinder {
 	
 	private boolean evaluate(String path){
 		if(path.matches(filesToFind)||path.contains(filesToFind)){
+			matchCount++;
 			return true;
 		}else{
 			return false;
